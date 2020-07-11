@@ -1,0 +1,79 @@
+#!/bin/bash
+# Ubuntu to MacOS Converter
+# 2020 
+# George Tsarouxas
+# tsarouxas@hellenictechnologies.com
+#Prerequisites
+echo 'Installing Prerequisites';
+sudo add-apt-repository universe
+sudo apt install gnome-tweak-tool
+sudo apt install gnome-shell-extensions
+sudo apt install dconf-editor
+sudo apt-get install autokey-gtk
+sudo apt install curl
+sudo apt install wget
+#FONTS
+echo 'Installing Fonts';
+curl mac-fonts.zip https://drive.noobslab.com/data/Mac/macfonts.zip  &&
+sudo unzip mac-fonts.zip -d /usr/share/fonts; rm mac-fonts.zip
+curl -kL https://raw.github.com/cstrap/monaco-font/master/install-font-ubuntu.sh | bash
+sudo apt-get install msttcorefonts
+sudo fc-cache -f -v
+
+#VIBER
+echo 'Installing VIBER';
+curl -OL https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb &&
+sudo apt install gdebi-core &&
+curl -OL http://archive.ubuntu.com/ubuntu/pool/main/o/openssl1.0/libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb &&
+sudo dpkg -i libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb &&
+sudo gdebi ~/viber.deb
+#Flameshot - Screenshots with Area
+echo 'Installing Flameshot';
+sudo apt install flameshot
+
+#Install the MacOS Theme
+echo 'Installing he MacOS Theme';
+sudo cp ./assets/icons/Cameo-OSX /usr/share/themes/  &&
+gsettings set org.gnome.desktop.interface gtk-theme 'Cameo-OSX'
+
+#Install the MacOS Icons
+echo 'Installing the MacOS Icons';
+sudo cp ./assets/icons/Os-Catalina-icons /usr/share/icons/ &&
+gsettings set org.gnome.desktop.interface icon-theme 'Os-Catalina-icons'
+
+#Install the MacOS Shell
+
+#Install Dropbox
+curl -OL https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_amd64.deb
+sudo apt install python3-gpg; 
+sudo apt install ./dropbox_2020.03.04_amd64.deb
+
+#Dock to Center and bottom
+gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false 
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM 
+gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode FIXED 
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64 
+gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items true
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 32
+gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items false
+
+#Set the Mac Fonts
+gsettings reset org.gnome.desktop.interface text-scaling-factor
+gsettings set org.gnome.desktop.interface document-font-name 'Lucida MAC Normal 9'
+gsettings set org.gnome.desktop.interface font-name 'Lucida MAC Normal 9'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Andale Mono Bold 9'
+gsettings set org.gnome.nautilus.desktop font 'Lucida MAC Normal 9'
+
+#Terminal Keyboard Shortcuts
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-tab '<Ctrl>t'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ close-tab '<Ctrl>w'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-window '<Shift><Ctrl>t'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ close-window '<Ctrl>n'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ copy '<Ctrl>c'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ paste '<Ctrl>v'
+gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ select-all '<Ctrl>a'
+#Keyboard Shortcuts
+
+
+
+
