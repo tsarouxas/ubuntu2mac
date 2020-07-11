@@ -12,7 +12,7 @@ if [ "$response" == "dark" ] || [ $response == 2 ]; then
     macos_version="dark"
 fi
 echo $macos_version
-exit 1
+#exit 1
 
 
 
