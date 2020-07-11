@@ -4,15 +4,14 @@
 # George Tsarouxas
 # tsarouxas@hellenictechnologies.com
 
-response=
 macos_version="light"
-
-echo -e "Please choose the version for your MacOS (default is light)\n Enter \n1)light\n2)dark "
+response = ""
+echo -e "Please choose the version for your MacOS (default is light)\n\n1) light\n2) dark\n\nEnter your selection: "
 read response
-if [ "$response"="dark" ]; then
+if [ "$response" == "dark" ] || [ $response == 2 ]; then
     macos_version="dark"
 fi
-
+echo $macos_version
 exit 1
 
 
@@ -46,9 +45,15 @@ echo 'Installing Flameshot';
 sudo apt install flameshot
 
 #Install the MacOS Theme
-echo 'Installing he MacOS Theme';
-sudo cp ./assets/icons/Cameo-OSX /usr/share/themes/  &&
-gsettings set org.gnome.desktop.interface gtk-theme 'Cameo-OSX'
+if [ "$macos_version" == "dark" ]; then
+    echo 'Installing Dark MacOS Theme';
+    sudo cp ./assets/icons/Cameo-Dark-OSX /usr/share/themes/  &&
+    gsettings set org.gnome.desktop.interface gtk-theme 'Cameo-Dark-OSX'
+else
+    echo 'Installing Light MacOS Theme';
+    sudo cp ./assets/icons/Cameo-OSX /usr/share/themes/  &&
+    gsettings set org.gnome.desktop.interface gtk-theme 'Cameo-OSX'
+fi
 
 #Install the MacOS Icons
 echo 'Installing the MacOS Icons';
