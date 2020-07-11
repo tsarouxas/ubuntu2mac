@@ -7,8 +7,8 @@ Shortcuts, Icons, Theme will look and feel exactly like MacOS.
 INSTALL WITH THE FOLLOWING COMMANDS
 git clone https://github.com/tsarouxas/ubuntu2mac/
 cd ubuntu2mac
-chmod +x ubuntu2mac.sh
-./ubuntu2mac.sh
+chmod +x ubuntu2mac
+./ubuntu2mac
 
 Important: Once you are done with running you will need to swap the LEFT CTRL key with the CMD key on your keyboard. 
 Open up the application Gnome Tweaks and go to Keyboard & Mouse -> Additional Layout Options -> 
