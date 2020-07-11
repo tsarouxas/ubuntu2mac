@@ -3,6 +3,20 @@
 # 2020 
 # George Tsarouxas
 # tsarouxas@hellenictechnologies.com
+
+response=
+macos_version="light"
+
+echo -e "Please choose the version for your MacOS (default is light)\n Enter \n1)light\n2)dark "
+read response
+if [ "$response"="dark" ]; then
+    macos_version="dark"
+fi
+
+exit 1
+
+
+
 #Prerequisites
 echo 'Installing Prerequisites';
 sudo add-apt-repository universe
