@@ -14,5 +14,7 @@ Important: Once you are done with running you will need to swap the LEFT CTRL ke
 Open up the application Gnome Tweaks and go to Keyboard & Mouse -> Additional Layout Options -> 
 Ctrl Position -> Enable only Swap Left Win with Left Ctrl
 
-Acknowledgements:
-You are fully responsible for running these commands and I receive no liability should any configurations damage your system.
+Disclaimer:
+No liability for the contents of this command can be accepted. Use this command at your own risk. There may be errors and inaccuracies, that may of course be damaging to your system. Although this is highly unlikely, you should proceed with caution. The author does not accept any responsibility for any damage incurred.
+
+All copyrights are held by their respective owners, unless specifically noted otherwise. 
