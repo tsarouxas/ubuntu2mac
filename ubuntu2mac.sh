@@ -48,6 +48,9 @@ curl -OL https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2020.03.04_
 sudo apt install python3-gpg; 
 sudo apt install ./dropbox_2020.03.04_amd64.deb
 
+#Set window top bar buttons to the left
+gsettings set org.gnome.desktop.wm.preferences button-layout ',close,minimize,maximize:'
+
 #Dock to Center and bottom
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false 
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM 
@@ -59,10 +62,10 @@ gsettings set org.gnome.shell.extensions.dash-to-dock unity-backlit-items false
 
 #Set the Mac Fonts
 gsettings reset org.gnome.desktop.interface text-scaling-factor
-gsettings set org.gnome.desktop.interface document-font-name 'Lucida MAC Normal 9'
 gsettings set org.gnome.desktop.interface font-name 'Lucida MAC Normal 9'
+gsettings set org.gnome.desktop.interface document-font-name 'Lucida MAC Normal 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'Andale Mono Bold 9'
-gsettings set org.gnome.nautilus.desktop font 'Lucida MAC Normal 9'
+gsettings set org.gnome.nautilus.desktop font 'Lucida MAC Normal 8'
 
 #Terminal Keyboard Shortcuts
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-tab '<Ctrl>t'
@@ -72,8 +75,23 @@ gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/k
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ copy '<Ctrl>c'
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ paste '<Ctrl>v'
 gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ select-all '<Ctrl>a'
+
 #Keyboard Shortcuts
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Ctrl>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings launch-terminal "['<Shift><Ctrl>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings lock-screen "['<Ctrl><Super>q']"
+#TODO: gsettings set org.gnome.desktop.wm.keybindings show-all-applications "['<Alt><Space>']"
 
 
+#LocalWP
+echo 'Installing LocalWP';
+curl -OL https://cdn.localwp.com/stable/latest/deb
+sudo dpkg -i local*linux.deb
 
+#VS Code
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt install code
 
+#Install Teamviewer
+sudo apt install teamviewer
