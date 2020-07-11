@@ -14,8 +14,6 @@ fi
 echo $macos_version
 #exit 1
 
-
-
 #Prerequisites
 echo 'Installing Prerequisites';
 sudo add-apt-repository universe
