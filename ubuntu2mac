@@ -40,7 +40,9 @@ sudo dpkg -i libssl1.0.0_1.0.2n-1ubuntu5.3_amd64.deb &&
 sudo gdebi ~/viber.deb
 #Flameshot - Screenshots with Area
 echo 'Installing Flameshot';
-sudo apt install flameshot
+curl -OL http://cloudfront.debian.net/debian/pool/main/f/flameshot/flameshot_0.6.0-11_amd64.deb
+sudo dpkg -i flameshot_0.6.0-11_amd64.deb
+rm flameshot_0.6.0-11_amd64.deb
 
 #Install the MacOS Theme
 if [ "$macos_version" == "dark" ]; then
@@ -57,6 +59,14 @@ fi
 echo 'Installing the MacOS Icons';
 sudo cp ./assets/icons/Os-Catalina-icons /usr/share/icons/ &&
 gsettings set org.gnome.desktop.interface icon-theme 'Os-Catalina-icons'
+
+#Hide the default ubuntu dock and enable Plank
+sudo apt install plank
+gsettings set org.gnome.shell.extensions.dash-to-dock autohide false
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
+gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
+mkdir -p ~/.config/autostart/
+cp ./configs/plank.desktop ~/.config/autostart/plank.desktop
 
 #Install the MacOS Shell
 
